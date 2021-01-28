@@ -1,0 +1,123 @@
+section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.eventDiv {
+    border: 1px solid white;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* height: 340px;
+    width: 390px; */
+    position: relative;
+    
+}
+
+.eventDiv, img {
+    max-width: 95%;
+    height: auto;
+    border-radius: 10px;
+}
+
+img {
+    height: 250px;
+    width: 390px;
+    box-shadow: 0px 6px 12px rgba(131, 131, 131, 0.726);
+}
+
+p {
+    font-family: 'Metrophobic', sans-serif;
+    font-size: 18px; 
+    margin: 0;
+    z-index: 1;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    z-index: 3;
+}
+.buttonDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    z-index: 3;
+}
+
+
+
+button {
+    border-radius: 5px;
+    border: .5px solid lightgray;
+    background-color: rgba(253, 122, 15, 0.877);
+    box-shadow: 0px 6px 12px rgba(131, 131, 131, 0.726);
+    font-family: 'Metrophobic', sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: rgba(184, 84, 3, 0.877);
+    box-shadow: 0px 8px 16px rgba(131, 131, 131, 0.726);
+}
+.ticket, .favorite {
+    background: none;
+    text-align: center;
+    color: rgba(253, 122, 15, 0.877);
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    border: none;
+}
+
+.ticket:hover, .favorite:hover {
+    color: rgba(161, 74, 3, 0.877);
+}
+
+.favRed {
+    color: red;
+}
+
+.moreDetails {
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    font-family: 'Metrophobic', sans-serif;
+    background-color: rgba(184, 84, 3, 0.877);
+    color: white;
+    /* height: 342px;
+    width: 392px; */
+    max-width: 100%;
+    height: auto;
+    margin-top: 68px;
+    position: absolute;
+    top: -65px;
+    z-index: 1;
+}
+.venue {
+    border-radius: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .ticket, .favorite {
+        font-size: 24px;
+    }
+}

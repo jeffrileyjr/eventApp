@@ -1,0 +1,65 @@
+<header>
+    <h1 class="title">Grand Search-Us</h1>
+
+    <nav>
+        <a routerLink="/home" routerLinkActive="active">Home</a>
+        <a routerLink="/bucketlist" routerLinkActive>Bucket List</a>  
+    </nav>
+</header>
+
+<h2>My Bucket List</h2>
+
+<section>
+    <div *ngFor="let fav of favorites; index as i" class="eventDiv">
+        <p class="name">{{ fav.name }}</p>
+        <img class="eventImg" src="{{ fav.images[1].url }}">
+        <p>{{ fav.dates.start.localDate }}</p>
+        <p>{{ fav._embedded.venues[0].city.name }}, {{ fav._embedded.venues[0].state.stateCode }}
+            {{ fav._embedded.venues[0].country.countryCode }}</p>
+            <div class="buttonDiv">
+                    <a href="{{ fav.url }}" target="_blank"><img class="ticket" src="../../assets/ticket.png"></a>
+                    <button *ngIf="fav.shouldBeHidden === true; else goBack" (click)="moreInfoFav(i)">Go Back</button>
+                    <ng-template #goBack><button (click)="moreInfoFav(i)">More Info...</button></ng-template>
+                    <i class="material-icons favRed" (click)="deleteFavorite(i)">favorite</i>
+                  </div>
+              
+                  <!-- more details div that shows more details for user -->
+                  <div class="moreDetails animated flipInY" *ngIf="favorites[i].shouldBeHidden">
+                      <ul>
+                        <!-- the ngIfs show event info if available, if not uses placeholder text -->
+                    <li *ngIf="fav._embedded.venues === undefined; else elseNext">
+                      No Venue Name Unavailable
+                    </li>
+                    <ng-template #elseNext
+                      ><li>{{ fav._embedded.venues[0].name }}</li></ng-template
+                    >
+                    <li *ngIf="fav._embedded.venues === undefined; else elseVenue">
+                      Venue Address Unavailable
+                    </li>
+                    <ng-template #elseVenue
+                      ><li>
+                        Address: {{ fav._embedded.venues[0].address.line1 }}
+                      </li></ng-template
+                    >
+                    <li *ngIf="fav.priceRanges === undefined; else elsePricing">
+                      No Pricing Available
+                    </li>
+                    <ng-template #elsePricing
+                      ><li>
+                        Tickets: {{ fav.priceRanges[0].min | currency }} - {{
+                          fav.priceRanges[0].max | currency
+                        }}
+                      </li></ng-template
+                    >
+                    <li *ngIf="fav.promoter === undefined; else elsePromoter">
+                      Event Description Unavailable
+                    </li>
+                    <ng-template #elseBlock
+                      ><li>{{ fav.promoter.description }}</li></ng-template
+                    >
+                  </ul>
+                    <img class="venue" src="{{fav.seatmap.staticUrl}}" style="width:100%; height:255px" alt="venue map">
+                 
+                  </div>
+    </div>
+</section>

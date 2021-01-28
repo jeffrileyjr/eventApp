@@ -1,0 +1,59 @@
+<section>
+    <!-- generates divs for every event object -->
+      <div *ngFor="let event of eventInfo; index as i" class="eventDiv">
+        <p class="name">{{ event.name }}</p>
+        <img src="{{ event.images[1].url }}" />
+        <p>{{ event.dates.start.localDate }}</p>
+        <p>{{ event._embedded.venues[0].city.name }}, {{ event._embedded.venues[0].state.stateCode }}
+          {{ event._embedded.venues[0].country.countryCode }}</p>
+        <div class="buttonDiv">
+          <!-- div to hold buttons -->
+          <a href="{{ event.url }}" target="_blank" class="ticket"><i class="fas fa-ticket-alt "></i></a>
+          <!-- ngIf on button that toggles more info to show and changes text of button based on state -->
+          <button *ngIf="event.shouldBeHidden === true; else goBack" (click)="moreInfo(i)">Go Back</button>
+          <ng-template #goBack><button (click)="moreInfo(i)">More Info</button></ng-template>
+          <i class="fas fa-heart favorite" (click)="[addFavorite(event), color(i)]"  *ngIf="!event.isFavorite; else remove"></i>
+          <ng-template #remove><i class="fas fa-heart favRed favorite" (click)="[removeFavorite(i), color(i)]" ></i></ng-template>
+        </div>
+    
+        <!-- more details div that shows more details for user -->
+        <div class="moreDetails animated flipInY" *ngIf="eventInfo[i].shouldBeHidden">
+            <ul>
+              <!-- the ngIfs show event info if available, if not uses placeholder text -->
+          <li *ngIf="event._embedded.venues === undefined; else elseNext">
+            No Venue Name Unavailable
+          </li>
+          <ng-template #elseNext
+            ><li>{{ event._embedded.venues[0].name }}</li></ng-template
+          >
+          <li *ngIf="event._embedded.venues === undefined; else elseVenue">
+            Venue Address Unavailable
+          </li>
+          <ng-template #elseVenue
+            ><li>
+              Address: {{ event._embedded.venues[0].address.line1 }}
+            </li></ng-template
+          >
+          <li *ngIf="event.priceRanges === undefined; else elsePricing">
+            No Pricing Available
+          </li>
+          <ng-template #elsePricing
+            ><li>
+              Tickets: {{ event.priceRanges[0].min | currency }} - {{
+                event.priceRanges[0].max | currency
+              }}
+            </li></ng-template
+          >
+          <li *ngIf="event.promoter === undefined; else elsePromoter">
+            Event Description Unavailable
+          </li>
+          <ng-template #elsePromoter
+            ><li>{{ event.promoter.description }}</li></ng-template
+          >
+          
+        </ul>
+        <img class="venue" src="{{event.seatmap.staticUrl}}" style="width:100%" alt="venue map">
+        </div>
+    
+      </div>
+    </section>

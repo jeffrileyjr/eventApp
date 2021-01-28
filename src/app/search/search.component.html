@@ -1,0 +1,87 @@
+<!-- Search form for user to search API data -->
+<form #eventForm="ngForm" (ngSubmit)="searchTicketmaster(eventForm)">
+    <label for="">What are you doing tonight? </label>
+    <div class="searchDiv">
+      <input
+        type="text"
+        name="eventSearch"
+        placeholder="Search by team, artist, event, or venue"
+        ngModel
+      />
+      <button class="searchBtn"><i class="material-icons">search</i></button>
+    </div>
+  </form>
+  <!-- Dropdown menu for user to change locations based on available options -->
+<nav>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <i class="material-icons">location_on</i
+        ><span>{{ this.tempLocation }}</span
+        ><i class="material-icons">arrow_drop_down</i>
+      </button>
+      <div class="dropdown_content">
+        <a (click)="changeLocation('LANSING')">LANSING</a>
+        <a (click)="changeLocation('GRAND RAPIDS')">GRAND RAPIDS</a>
+        <a (click)="changeLocation('CLEVELAND')">CLEVELAND</a>
+        <a (click)="changeLocation('CINCINNATI')">CINCINNATI</a>
+        <a (click)="changeLocation('INDIANAPOLIS')">INDIANAPOLIS</a>
+        <a (click)="changeLocation('CHICAGO')">CHICAGO</a>
+        <a
+          *ngIf="this.tempLocation !== 'DETROIT'"
+          (click)="changeLocation('DETROIT')"
+          >DETROIT</a
+        >
+      </div>
+    </div>
+    <div class="dateFilterDiv">
+      <!-- Button to filter event data by date -->
+      <button class="dateFilterBtn" (click)="filterByDate()">SORT BY DATE</button>
+    </div>
+  </nav>
+  <!-- Buttons for user to select events based on types -->
+  <div class="genreDiv">
+    <div
+      class="genreBtn"
+      (click)="fetchNFL()"
+      style="background-image: url('https://seatgeek.com/images/performers-landscape/generic-nfl-football-ea572f/677209/huge.jpg')"
+    >
+      <p>NFL</p>
+    </div>
+    <div
+      class="genreBtn"
+      (click)="fetchMLB()"
+      style="background-image: url('https://seatgeek.com/images/performers-landscape/generic-mlb-baseball-65710f/677213/huge.jpg')"
+    >
+      <p>MLB</p>
+    </div>
+    <div
+      class="genreBtn"
+      (click)="fetchComedy()"
+      style="background-image: url('https://seatgeek.com/images/performers-landscape/generic-comedy-a8132c/677157/huge.jpg')"
+    >
+      <p>COMEDY</p>
+    </div>
+    <div
+      class="genreBtn"
+      (click)="fetchMusic()"
+      style="background-image: url('https://seatgeek.com/images/performers-landscape/generic-concerts-871641/677165/huge.jpg')"
+    >
+      <p>MUSIC</p>
+    </div>
+    <div
+      class="genreBtn"
+      (click)="fetchTheatre()"
+      style="background-image: url('https://seatgeek.com/images/performers-landscape/generic-broadway-shows-36cdbe/677158/huge.jpg')"
+    >
+      <p>THEATRE</p>
+    </div>
+  </div>
+  <!-- Below shows events that load by default -->
+  <h1>RECOMMENDED FOR YOU</h1>
+  
+  <app-events
+    [eventInfo]="eventInfo"
+    (onEventToggle)="toggleDisplay($event)"
+    (onFavoriteToggle)="toggleFavorite($event)"
+  ></app-events>
+  

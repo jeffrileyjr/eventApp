@@ -1,0 +1,179 @@
+form {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.searchDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+/* label for search input */
+label {
+  font-family: "Anton", sans-serif;
+  color: white;
+  font-size: 14px;
+  text-shadow: 2px 3px rgba(253, 122, 15, 0.877);
+}
+input::placeholder {
+  color: white;
+  font-size: 12px;
+}
+input {
+  border: none;
+  outline: none;
+  min-width: 65%;
+  padding: 5px;
+  color: white;
+  background-color: rgba(133, 132, 132, 0.3);
+  border-radius: 16px 0px 16px 0px;
+  border-bottom: 3px solid rgba(253, 122, 15, 0.877);
+}
+input:focus {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 15%;
+}
+
+button {
+    cursor: pointer;
+}
+/* input search button */
+.searchBtn {
+  width: auto;
+  margin-left: 5px;
+  color: white;
+  text-shadow: 2px 3px rgba(253, 122, 15, 0.877);
+  background-color: transparent;
+  border: none;
+}
+/* location dropdown and date button*/
+.dropbtn,
+.dateFilterBtn {
+  width: 200px;
+  margin: 10px;
+  background-color: white;
+  color: black;
+  font-family: "Metrophobic", sans-serif;
+  font-size: 14px;
+  border: none;
+}
+
+.dropbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown,
+.dateFilterDiv {
+  width: 25%;
+}
+/* dropdown div */
+.dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dropdown content hidden by default */
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* links inside dropdown */
+.dropdown_content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* show menu on hover */
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+/* div with genre filter buttons */
+.genreDiv {
+  width: 100%;
+  border-bottom: 0.5px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.genreBtn {
+  height: 70px;
+  width: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 6px 12px rgba(131, 131, 131, 0.726);
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  cursor: pointer;
+}
+.genreBtn:hover {
+  box-shadow: 0px 8px 16px rgba(131, 131, 131, 0.726);
+}
+
+p {
+  font-family: "Anton", sans-serif;
+  font-size: 22px;
+  color: white;
+  margin: 10px;
+}
+
+h1 {
+  font-family: "Anton", sans-serif;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media only screen and (min-width: 768px) {
+    label {
+        font-size: 2em;
+    }
+    input::placeholder {
+
+        font-size: 22px;
+      }
+      input {
+
+        padding: 15px;
+
+
+      }
+
+      .material-icons {
+        font-size: 44px;
+
+      }
+
+}
