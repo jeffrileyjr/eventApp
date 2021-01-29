@@ -17,10 +17,10 @@
         <p>{{ fav._embedded.venues[0].city.name }}, {{ fav._embedded.venues[0].state.stateCode }}
             {{ fav._embedded.venues[0].country.countryCode }}</p>
             <div class="buttonDiv">
-                    <a href="{{ fav.url }}" target="_blank"><img class="ticket" src="../../assets/ticket.png"></a>
+                    <a href="{{ fav.url }}" target="_blank" class="ticket"><i class="fas fa-ticket-alt"></i></a>
                     <button *ngIf="fav.shouldBeHidden === true; else goBack" (click)="moreInfoFav(i)">Go Back</button>
                     <ng-template #goBack><button (click)="moreInfoFav(i)">More Info...</button></ng-template>
-                    <i class="material-icons favRed" (click)="deleteFavorite(i)">favorite</i>
+                    <i class="fas fa-heart favorite favRed" (click)="deleteFavorite(i)"></i>
                   </div>
               
                   <!-- more details div that shows more details for user -->
@@ -54,7 +54,7 @@
                     <li *ngIf="fav.promoter === undefined; else elsePromoter">
                       Event Description Unavailable
                     </li>
-                    <ng-template #elseBlock
+                    <ng-template #elsePromoter
                       ><li>{{ fav.promoter.description }}</li></ng-template
                     >
                   </ul>

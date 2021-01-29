@@ -1,10 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EventInfo } from './eventInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  eventInfo: EventInfo = {
+    name: '',
+    imageURL: '',
+    localDate: '',
+    city: '',
+    country: '',
+    eventURL: '',
+    shouldBeHidden: true,
+    isFavorite: false,
+    venueName: '',
+    venueAddress: '',
+    priceRangeMax: 0,
+    priceRangeMin: 0,
+    description: '',
+    seatmap: '',
+  }
 
   ticketApiKey: string = "u0GkAWD7BmZxAM9fjkaula4mnTPTQXnX";
   favorites: any[] = [];
@@ -12,6 +30,10 @@ export class ApiService {
   arts: string = "Arts & Theatre";
 
   constructor(private http: HttpClient) { }
+
+  loadEventInfo(city: string) {
+    return this.http.get(`https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&apikey=${this.ticketApiKey}`);
+  }
 
   preloadData() {
     return this.http.get(`https://app.ticketmaster.com/discovery/v2/events.json?city=${this.tempLocation}&apikey=${this.ticketApiKey}`);

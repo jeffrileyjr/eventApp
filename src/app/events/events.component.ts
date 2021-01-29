@@ -9,7 +9,6 @@ import { ApiService } from '../api.service';
 export class EventsComponent implements OnInit {
   showing: boolean = false;
   favorite: boolean = false;
-  buttonText: string ="More Info";
   @Input() shouldBeHidden: boolean;
   @Input() favorites: any;
   @Input() isFavorite: boolean;
@@ -21,10 +20,16 @@ export class EventsComponent implements OnInit {
 
 
 
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.favorites = this.apiService.listFavorites();
+    for (let i = 0; i < this.favorites.length; i++ ) {
+      const eventIDs = this.eventInfo.map(el => el.id);
+      let index = eventIDs.indexOf(this.favorites[i].id);
+      this.eventInfo[index].isFavorite = true;
+    }
   }
   // method to add favorites to favorite array
   addFavorite(favEvent) {
@@ -40,7 +45,6 @@ export class EventsComponent implements OnInit {
   // brings up more info for user to see
   moreInfo(index: number): void {
     this.onEventToggle.emit(index);
-    this.buttonText = "Go Back";
     this.showing = !this.showing;
     
   }
