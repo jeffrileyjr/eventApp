@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   shouldBeHidden: boolean = false;
   // boolean for favorite Icon
   isFavorite: boolean = false;
+  noResults: boolean = false;
   favorites: any[] = [];
   event: {} = {
     name: 'No Upcoming Events',
@@ -51,10 +52,18 @@ export class SearchComponent implements OnInit {
   searchTicketmaster(form) {
     this.apiService
       .getTicketmasterData(form.value.eventSearch)
-      .subscribe((response) => {
-        this.eventInfo = response['_embedded'].events;
-        console.log(response);
-        return this.eventInfo;
+      .subscribe((response: any) => {
+        console.log(response)
+        if (response.length === 0) {
+          console.log('no events');
+          this.eventInfo = [];
+          return this.noResults = true;
+        } else {
+          this.noResults = false;
+          this.eventInfo = response['_embedded'].events;
+          console.log(response);
+          return this.eventInfo;
+        }
       });
     form.resetForm();
   }
@@ -82,38 +91,87 @@ export class SearchComponent implements OnInit {
   }
   //pulls comedy events for current city
   fetchComedy() {
-    this.apiService.getComedy().subscribe((response) => {
-      this.eventInfo = response['_embedded'].events;
-      return this.eventInfo;
+    this.apiService.getComedy().subscribe((response: any) => {
+      console.log(response)
+      if (response.length === 0) {
+        console.log('no events');
+        this.eventInfo = [];
+        return this.noResults = true;
+      } else {
+        this.noResults = false;
+        this.eventInfo = response['_embedded'].events;
+        console.log(response);
+        return this.eventInfo;
+      }
+
     });
   }
   //pulls MLB events for current city
   fetchMLB() {
-    this.apiService.getMLB().subscribe((response) => {
-      this.eventInfo = response['_embedded'].events;
-      return this.eventInfo;
+    this.apiService.getMLB().subscribe((response: any) => {
+      console.log(response)
+      if (response.length === 0) {
+        console.log('no events');
+        this.eventInfo = [];
+        return this.noResults = true;
+      } else {
+        this.noResults = false;
+        this.eventInfo = response['_embedded'].events;
+        console.log(response);
+        return this.eventInfo;
+      }
+
     });
   }
   //pulls NFL events for current city
   fetchNFL() {
-    this.apiService.getNFL().subscribe((response) => {
-      this.eventInfo = response['_embedded'].events;
-      return this.eventInfo;
+    this.apiService.getNFL().subscribe((response: any) => {
+      console.log(response)
+      if (response.length === 0) {
+        console.log('no events');
+        this.eventInfo = [];
+        return this.noResults = true;
+      } else {
+        this.noResults = false;
+        this.eventInfo = response['_embedded'].events;
+        console.log(response);
+        return this.eventInfo;
+      }
+
     });
   }
   //pulls music events for current city
   fetchMusic() {
-    this.apiService.getMusic().subscribe((response) => {
-      this.eventInfo = response['_embedded'].events;
-      return this.eventInfo;
+    this.apiService.getMusic().subscribe((response: any) => {
+      console.log(response)
+      if (response.length === 0) {
+        console.log('no events');
+        this.eventInfo = [];
+        return this.noResults = true;
+      } else {
+        this.noResults = false;
+        this.eventInfo = response['_embedded'].events;
+        console.log(response);
+        return this.eventInfo;
+      }
+
     });
   }
   //pulls theatre events for current city
   fetchTheatre() {
-    this.apiService.getTheatre().subscribe((response) => {
-      this.eventInfo = response['_embedded'].events;
-      console.log(response);
-      return this.eventInfo;
+    this.apiService.getTheatre().subscribe((response: any) => {
+      console.log(response)
+      if (response.length === 0) {
+        console.log('no events');
+        this.eventInfo = [];
+        return this.noResults = true;
+      } else {
+        this.noResults = false;
+        this.eventInfo = response['_embedded'].events;
+        console.log(response);
+        return this.eventInfo;
+      }
+
     });
   }
   //toggles more Info to show or not

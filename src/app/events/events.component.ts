@@ -13,6 +13,7 @@ export class EventsComponent implements OnInit {
   @Input() favorites: any;
   @Input() isFavorite: boolean;
   @Input() eventInfo: any[];
+  @Input() noResults: boolean;
   // @Output() onToggleFav = new EventEmitter<any>();
   @Input() filteredData: any [];
   @Output() onEventToggle = new EventEmitter<any>();

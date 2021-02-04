@@ -54,6 +54,10 @@
         </ul>
         <img class="venue" src="{{event.seatmap.staticUrl}}" style="width:100%" alt="venue map">
         </div>
-    
+
+     
+      </div>
+      <div *ngIf='!this.eventInfo.length' class="eventDiv">
+        <p class="noResults">Sorry, no results.</p>
       </div>
     </section>

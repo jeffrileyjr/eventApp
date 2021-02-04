@@ -119,4 +119,7 @@ button:hover {
     .ticket, .favorite {
         font-size: 24px;
     }
+    .noResults {
+        font-size: 32px;
+    }
 }
