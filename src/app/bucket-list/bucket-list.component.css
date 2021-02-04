@@ -68,16 +68,36 @@ section {
     border-radius: 10px;
 }
 
-img {
+.info {
+    position: absolute;
+    background-color: rgba(38, 38, 38, 0.65);
+    box-shadow: 0px 8px 16px rgba(27, 27, 27, 0.726);
+    color: white;
+    font-weight: 400;
+    padding: 5px;
+    min-width: 40%;
+    border-radius: 5px;
+    top: 175px;
+    left: 15px;
+}
+
+.info .name {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.image {
+    background-size: cover;
     height: 250px;
     width: 390px;
     box-shadow: 0px 6px 12px rgba(131, 131, 131, 0.726);
+    border-radius: 5px;
+    background-position: center;
+  transition: all 0.3s ease-in-out;
 }
 
-p {
-    font-family: 'Metrophobic', sans-serif;
-    font-size: 18px; 
-    margin: 0;
+.image:hover {
+    background-size: 125%;
 }
 
 .buttonDiv {
@@ -167,5 +187,19 @@ button:hover {
     }
     nav a {
         font-size: 32px;
+    }
+    .info {
+        max-width: 95%;
+        top: 165px;
+        left: 15px;
+    }
+    .info .name {
+        font-size: 1.15em;
+    }
+    .noFaves {
+        margin-top: 15px;
+        font-size: 2.5em;
+        font-weight: 500;
+        text-shadow: 0px 8px 16px rgba(131, 131, 131, 0.726);
     }
 }

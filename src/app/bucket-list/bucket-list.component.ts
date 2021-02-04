@@ -19,7 +19,7 @@ export class BucketListComponent implements OnInit {
 
 // on load, shows favorites array
 ngOnInit() {
-  this.favorites = this.apiService.listFavorites();   
+  this.favorites = this.apiService.listFavorites(); 
 }
 // deletes favorites
 deleteFavorite(index: number) {

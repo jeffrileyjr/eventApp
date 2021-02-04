@@ -36,6 +36,7 @@ export class SearchComponent implements OnInit {
   // preloads data on page load
   ngOnInit() {
     this.apiService.preloadData().subscribe((response) => {
+      console.log(response)
       this.eventInfo = response['_embedded'].events;
       return this.eventInfo;
     });

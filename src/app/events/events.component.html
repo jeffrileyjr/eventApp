@@ -1,11 +1,15 @@
 <section>
     <!-- generates divs for every event object -->
       <div *ngFor="let event of eventInfo; index as i" class="eventDiv">
-        <p class="name">{{ event.name }}</p>
-        <img src="{{ event.images[1].url }}" />
-        <p>{{ event.dates.start.localDate }}</p>
-        <p>{{ event._embedded.venues[0].city.name }}, {{ event._embedded.venues[0].state.stateCode }}
-          {{ event._embedded.venues[0].country.countryCode }}</p>
+        <div class="info">
+          <p class="name">{{ event.name }}</p>
+          <p>{{ event.dates.start.localDate | date:'mediumDate'}}</p>
+          <p>{{ event._embedded.venues[0].city.name }}, {{ event._embedded.venues[0].state.stateCode }}
+            {{ event._embedded.venues[0].country.countryCode }}</p>
+        </div>
+        <div class="image" [style.background-image]="event.images[0].width >= 250 ? 'url(' + event.images[0].url + ')' : 'url(' + event.images[2].url +')'"></div>
+        <!-- <img src="{{ event.images[1].url }}" /> -->
+
         <div class="buttonDiv">
           <!-- div to hold buttons -->
           <a href="{{ event.url }}" target="_blank" class="ticket"><i class="fas fa-ticket-alt"></i></a>
